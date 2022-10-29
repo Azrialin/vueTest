@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-model</title>
+</head>
+<body>
+    <!-- Vue3 -->
+    <div id="app">
+        <button v-for="num in 9" :key="num" @click="keyin = num">{{num}}</button>
+        <button @click = "keyin = 0">0</button>
+        <h6>{{keyin}}</h6>
+        <button @click="reduceCount">-</button>
+        <button @click="addCount">+</button>
+        <button @click="calc">=</button>
+        <button @click="clear">C</button>
+        <div class="step">
+            {{step}}
+        </div>
+        <h6>{{result}}</h6>
+        <!-- <h1 data-attr="1">{{title}}</h1>
+        <h6>${{price}}</h6>
+        <div>
+            <button @click="reduceCount">-</button>
+            <input type="number" v-model="count">
+            <button @click="addCount">+</button>
+        </div>
+        <button>Add</button>
+        <p>total : {{total}} NTD</p> -->
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        Vue.createApp({
+            data(){
+                return{
+                    step: '',
+                    keyin: 0,
+                    result: 0
+                }
+            },
+            methods:{
+                keyin(){
+                    this.keyin
+                },
+                addCount(){
+                    this.count +=1
+                },
+                reduceCount(){
+                    this.count -=1
+                },
+                calc(){
+
+                },
+                clear(){
+                    this.result = 0
+                },
+            }
+        }).mount("#app")
+    </script>
+</body>
+</html>

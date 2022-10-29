@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-model</title>
+</head>
+<body>
+    <!-- Vue3 -->
+    <div id="app">
+        <h1 data-attr="1">{{title}}</h1>
+        <h6>${{price}}</h6>
+        <div>
+            <button @click="reduceCount">-</button>
+            <input type="number" v-model="count">
+            <button @click="addCount">+</button>
+        </div>
+        <button>Add</button>
+        <p>total : {{total}} NTD</p>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        Vue.createApp({
+            data(){
+                return{
+                    title: 'what up',
+                    price: 100,
+                    count: 1,   //number
+                    total: 0
+                }
+            },
+            methods:{
+                addCount(){
+                    // console.log(e);
+                    // console.log(this.count);
+                    this.count +=1
+                    // this.total = this.count * this.price 程式重複可以寫在另一個函式 function 
+                    this.sumTotal()
+                },
+                reduceCount(){
+                    if(this.count <= 0) return
+                    // count -=1
+                    this.count -=1
+                    // this.total = this.count * this.price 程式重複可以寫在另一個函式 function 
+                    this.sumTotal()
+                },
+                sumTotal(){
+                    this.total = this.count * this.price
+                }
+            }
+        }).mount("#app")
+    </script>
+</body>
+</html>
