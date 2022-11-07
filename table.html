@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const tableInfo = {
+            家又: "喜歡滑IG",
+            詩雲: "喜歡NFT",
+            玉琴: "每天都要來一罐redbull",
+            柏翔: "喜歡德國商品"
+        }
+        tableInfo['家又'] = "在抓頭";
+        tableInfo.家又 = "想吃什麼午餐";
+        console.log(tableInfo.家又);
+
+        const arrary1 = [1, 2, 3];
+        const arrary2 = [4, 5, 6];
+        const arrary3 = [...arrary1, ...arrary2];
+        console.log(arrary3);
+
+
+        const name = '全域阿婆'
+        const auntie = {
+            name: '漂亮阿姨',
+            callName: function () {
+                // 注意，這裡是 function，以此為基準產生一個作用域
+                console.log('1', this.name); // 1 漂亮阿姨
+                setTimeout(function () {
+                    console.log('2', this); // 2 window 物件
+                }, 10);
+                setTimeout(() => {
+                    console.log('3', this); // 3 auntie物件
+                }, 10);
+            },
+            callName2: () => {
+                // 注意，如果使用箭頭函式，this 依然指向 window
+                console.log('4', this.name); // 4 全域阿婆
+                setTimeout(function () {
+                    console.log('5', this); // 5 window物件
+                }, 10);
+                setTimeout(() => {
+                    console.log('6', this); // 6 window物件
+                }, 10);
+            }
+        }
+
+        auntie.callName()
+        auntie.callName2()
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
